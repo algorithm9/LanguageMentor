@@ -1,3 +1,5 @@
+# src/utils/main.py
+
 import gradio as gr
 from tabs.scenario_tab import create_scenario_tab
 from tabs.conversation_tab import create_conversation_tab

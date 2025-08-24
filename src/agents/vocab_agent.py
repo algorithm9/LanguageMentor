@@ -1,3 +1,5 @@
+# src/agents/vocab_agent.py
+
 from langchain_core.messages import AIMessage  # 导入 AI 消息类
 
 from .session_history import get_session_history  # 导入用于处理会话历史的方法

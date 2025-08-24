@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# src/utils/merge_requirements.py
+
 import importlib.metadata
 import re
 import os

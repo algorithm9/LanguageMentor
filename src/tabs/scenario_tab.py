@@ -1,4 +1,4 @@
-# tabs/scenario_tab.py
+# src/tabs/scenario_tab.py
 
 import gradio as gr
 from agents.scenario_agent import ScenarioAgent
@@ -54,6 +54,7 @@ def create_scenario_tab():
         scenario_chatbot = gr.Chatbot(
             placeholder="<strong>你的英语私教 DjangoPeng</strong><br><br>选择场景后开始对话吧！",  # 聊天机器人的占位符
             height=600,  # 聊天窗口高度
+            type="messages"
         )
 
         # 更新场景介绍并在场景变化时启动新会话
@@ -68,8 +69,5 @@ def create_scenario_tab():
             fn=handle_scenario,  # 处理场景聊天的函数
             chatbot=scenario_chatbot,  # 聊天机器人组件
             additional_inputs=scenario_radio,  # 额外输入为场景选择
-            retry_btn=None,  # 不显示重试按钮
-            undo_btn=None,  # 不显示撤销按钮
-            clear_btn="清除历史记录",  # 清除历史记录按钮文本
             submit_btn="发送",  # 发送按钮文本
         )

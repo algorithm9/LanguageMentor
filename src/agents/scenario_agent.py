@@ -1,3 +1,5 @@
+# src/agents/scenario_agent.py
+
 import random
 
 from langchain_core.messages import AIMessage  # 导入消息类

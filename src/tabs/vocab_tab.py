@@ -1,4 +1,4 @@
-# tabs/vocab_tab.py
+# src/tabs/vocab_tab.py
 
 import gradio as gr
 from agents.vocab_agent import VocabAgent
@@ -71,8 +71,5 @@ def create_vocab_tab():
         gr.ChatInterface(
             fn=handle_vocab,  # 处理用户输入的函数
             chatbot=vocab_study_chatbot,  # 关联的聊天机器人组件
-            retry_btn=None,  # 不显示重试按钮
-            undo_btn=None,  # 不显示撤销按钮
-            clear_btn=None,  # 学习下一批新单词按钮
             submit_btn="发送",  # 发送按钮的文本
         )

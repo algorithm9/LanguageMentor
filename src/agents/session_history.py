@@ -1,3 +1,5 @@
+# src/agents/session_history.py
+
 from langchain_core.chat_history import (
     BaseChatMessageHistory,  # 基础聊天消息历史类
     InMemoryChatMessageHistory,  # 内存中的聊天消息历史类
