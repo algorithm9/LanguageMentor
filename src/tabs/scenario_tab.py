@@ -1,4 +1,4 @@
-# src/tabs/scenario_tab.py
+# tabs/scenario_tab.py
 
 import gradio as gr
 from agents.scenario_agent import ScenarioAgent
@@ -8,7 +8,9 @@ from utils.logger import LOG
 agents = {
     "job_interview": ScenarioAgent("job_interview"),
     "hotel_checkin": ScenarioAgent("hotel_checkin"),
-    # 可以根据需要添加更多场景代理
+    "salary_negotiation": ScenarioAgent("salary_negotiation"),
+    "renting_apartment": ScenarioAgent("renting_apartment"),
+    "requesting_leave": ScenarioAgent("requesting_leave"),
 }
 
 def get_page_desc(scenario):
@@ -19,14 +21,17 @@ def get_page_desc(scenario):
     except FileNotFoundError:
         LOG.error(f"场景介绍文件 content/page/{scenario}.md 未找到！")
         return "场景介绍文件未找到。"
-    
+
 # 获取场景介绍并启动新会话的函数
 def start_new_scenario_chatbot(scenario):
+    if not scenario:
+        return gr.update(value=None, interactive=False), gr.update(value=None)
     initial_ai_message = agents[scenario].start_new_session()  # 启动新会话并获取初始AI消息
 
     return gr.Chatbot(
         value=[(None, initial_ai_message)],  # 设置聊天机器人的初始消息
         height=600,  # 聊天窗口高度
+        type="messages"
     )
 
 # 场景代理处理函数，根据选择的场景调用相应的代理
@@ -42,11 +47,12 @@ def create_scenario_tab():
         # 创建单选框组件
         scenario_radio = gr.Radio(
             choices=[
-                ("求职面试", "job_interview"),  # 求职面试选项
-                ("酒店入住", "hotel_checkin"),  # 酒店入住选项
-                # ("薪资谈判", "salary_negotiation"),  # 薪资谈判选项（注释掉）
-                # ("租房", "renting")  # 租房选项（注释掉）
-            ], 
+                ("求职面试", "job_interview"),
+                ("酒店入住", "hotel_checkin"),
+                ("薪酬谈判", "salary_negotiation"),
+                ("租房", "renting_apartment"),
+                ("单位请假", "requesting_leave")
+            ],
             label="场景"  # 单选框标签
         )
 
