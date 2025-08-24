@@ -1,0 +1,31 @@
+# The key of the model to be used by the application
+active_model: deepseek_chat
+
+# Configuration for different model providers
+providers:
+  ollama:
+    # Models provided by Ollama (running locally)
+    models:
+      ollama_llama3_1:
+        provider: ollama
+        model_name: "llama3.1:8b-instruct-q8_0"
+        max_tokens: 8192
+        temperature: 0.8
+
+  openai:
+    # Models provided by OpenAI (requires OPENAI_API_KEY)
+    models:
+      gpt_4o_mini:
+        provider: openai
+        model_name: "gpt-4o-mini"
+        max_tokens: 8192
+        temperature: 0.8
+
+  deepseek:
+    # Models provided by DeepSeek (requires DEEPSEEK_API_KEY)
+    models:
+      deepseek_chat:
+        provider: deepseek
+        model_name: "deepseek-chat"
+        max_tokens: 8192
+        temperature: 0.8

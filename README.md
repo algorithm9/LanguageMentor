@@ -48,15 +48,31 @@ https://github.com/user-attachments/assets/6298a8e4-28fc-4a60-badc-59bff16b315e
    pip install -r requirements.txt
    ```
 
-   根据需要配置你的环境变量，例如 `OpenAI_API_KEY` 等。
+4. **配置大模型**
+      本项目支持通过 Ollama (本地)、OpenAI (云端) 或 DeepSeek (云端) 来驱动。请在项目根目录的 `config.yaml` 文件中进行配置。
 
-4. **运行应用**
+    - **切换模型**:
+      打开 `config.yaml` 文件，修改 `active_model` 的值来选择你希望使用的模型。例如，要使用 DeepSeek，请修改为:
+      ```yaml
+      active_model: deepseek_chat
+      ```
+
+    - **设置 API 密钥**:
+      如果你选择使用 OpenAI 或 DeepSeek，你必须设置对应的 API 密钥。创建一个名为 `.env` 的文件，并在其中添加你的密钥：
+      ```
+      # .env file
+      OPENAI_API_KEY="sk-..."
+      DEEPSEEK_API_KEY="sk-..."
+      ```
+      或者，你也可以将它们设置为系统环境变量。
+
+5. **运行应用**
    启动应用程序：
    ```bash
    python src/main.py
    ```
 
-5. **开始体验**
+6. **开始体验**
    打开浏览器，访问 `http://localhost:7860`，开始跟着 LanguageMentor 一起学习英语！
 
    运行画面：

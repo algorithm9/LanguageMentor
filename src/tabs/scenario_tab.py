@@ -25,14 +25,13 @@ def get_page_desc(scenario):
 # 获取场景介绍并启动新会话的函数
 def start_new_scenario_chatbot(scenario):
     if not scenario:
-        return gr.update(value=None, interactive=False), gr.update(value=None)
-    initial_ai_message = agents[scenario].start_new_session()  # 启动新会话并获取初始AI消息
+        # 当清除选择时，返回 None 以清空 Chatbot
+        return None
 
-    return gr.Chatbot(
-        value=[(None, initial_ai_message)],  # 设置聊天机器人的初始消息
-        height=600,  # 聊天窗口高度
-        type="messages"
-    )
+    # 直接调用 agent 的方法，并返回它产出的、已经格式化好的历史记录列表
+    formatted_history = agents[scenario].start_new_session()
+
+    return formatted_history
 
 # 场景代理处理函数，根据选择的场景调用相应的代理
 def handle_scenario(user_input, chat_history, scenario):
